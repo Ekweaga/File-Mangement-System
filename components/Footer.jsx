@@ -4,7 +4,7 @@ import Image from "next/image"
 function Footer() {
   return (
   <>
-  <footer className="md:h-[400px] bg-[#081421] text-white flex flex-col gap-[40px] px-4 ">
+  <footer className=" bg-[#081421] text-white flex flex-col gap-[40px] px-4 ">
 
     <div className='bg-[#182031] md:w-[850px] md:h-[250px] shadow-2xl items-center justify-center  -mt-[80px] md:ml-[200px]'>
     <div className='  flex flex-col p-4 gap-[50px] '>
@@ -24,22 +24,22 @@ function Footer() {
    
 
 
-    <div>
+    <div className=''>
       <div className='mb-[20px]'>
       <Image src="/images/logo.svg" width={100} height={50} alt="icon"/>
       </div>
-
-      <div className='grid grid-cols-1 md:grid-cols-4 gap-[40px]'>
+<div className='flex items-center justify-center  mx-auto'>
+      <div className='grid grid-cols-1 md:grid-cols-4  gap-[30px] items-center justify-center'>
         <div className='flex gap-[10px]'>
-        <div><Image src="/images/icon-location.svg" width={10} height={50} alt="icon"/></div><p>Fylo stores all your important files in one location. Access them whenever you need,share and collaborate with friends and families, co-workers</p>
+        <div><Image src="/images/icon-location.svg" width={40} height={50} alt="icon"/></div><p className=' text-sm'>Fylo stores all your important files in one location. Access them whenever you need,share and collaborate with friends and families, co-workers</p>
         </div>
 
-        <div>
-          <div className='flex gap-[10px] items-center '>
+        <div className=' '>
+          <div className='flex gap-[10px] items-center md:justify-center '>
           <div><Image src="/images/icon-email.svg" width={10} height={50} alt="icon"/></div><p>infofylo@gmail.com</p>
 
           </div>
-          <div className='flex gap-[10px] items-center '>
+          <div className='flex gap-[10px] items-center md:justify-center '>
           <div><Image src="/images/icon-phone.svg" width={10} height={50} alt="icon"/></div><p>+234 81488 37221</p>
 
           </div>
@@ -47,17 +47,17 @@ function Footer() {
         </div>
 
 
-        <div>
-          <h3>About Us</h3>
-          <ul>
+        <div className='flex flex-col '>
+          <h3 className='font-bold'>About Us</h3>
+          <ul className='flex flex-col gap-[5px]' >
             <li>Jobs</li>
             <li>Press</li>
             <li>Blog</li>
           </ul>
         </div>
         <div>
-        <h3>Contact Us</h3>
-          <ul>
+        <h3 className='font-bold md:-mt-[25px]'>Contact Us</h3>
+          <ul className='flex flex-col gap-[5px]'>
             <li>Jobs</li>
             <li>Press</li>
             
@@ -67,7 +67,7 @@ function Footer() {
         <div>
 
         </div>
-      </div>
+      </div></div>
     </div>
 
   </footer>

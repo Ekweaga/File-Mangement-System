@@ -20,6 +20,10 @@ a {
 * {
   box-sizing: border-box;
 }
+.navbar{
+  transition: all 0.5 ease-in;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

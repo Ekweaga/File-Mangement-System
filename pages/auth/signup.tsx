@@ -6,20 +6,14 @@ import {Authentication} from "../../services/utils"
 function Signup() {
   const [email,setEmail] = useState<string>("")
   const [name,setName] = useState<string>("")
-  const [password,setPassword] = useState<string>("")
+  const [password,setPassword] = useState<string | number>("")
   const [error, setError] = useState<string>("")
 
-  const obj = new Authentication()
-
   const submit = (e:any)=>{
-    e.preventDefault()
-    obj.signUp(name,email,password)
-
-    if(obj.error){
-      setError(obj.error)
-    }
-    else{
-      setError("")
+    e.preventDefault();
+    if(!name || !email || !password){
+      setError("Check For Empty Fields")
+      return;
     }
     
   
@@ -46,6 +40,9 @@ function Signup() {
         </div>
         <div>
         <button className="bg-[#54CED5] text-white w-[280px] rounded-full p-2">Submit</button>
+        </div>
+        <div>
+          <p>SignIn with goggle</p>
         </div>
         <div>
           <p>Already have an account ? <Link href="/auth/login"  className='text-[#14f2fe] font-bold'>Login</Link></p>

@@ -2,11 +2,15 @@ import React,{useState} from 'react'
 import Image from "next/image"
 import Link from "next/link"
 
+
 function Navbar() {
+const transition = {
+  transition:'all 0.5 ease-in'
+}
 
   const [open,setOpen] = useState(false)
   return (
-   <nav className='text-white flex justify-between p-4 shadow-2xl'>
+   <nav className='text-white flex justify-around py-4 shadow-2xl fixed top-0 left-0 bg-[#081421] right-0' style={{zIndex:777777}}>
     <div>
       <Image src="/images/logo.svg" width={100} height={50} alt="icon"/>
     </div>
@@ -35,12 +39,19 @@ function Navbar() {
 
         
         <div
-          className={`md:hidden text-white absolute w-2/3 h-screen z-10
-      px-7 py-2 font-medium bg-black shadow-2xl  top-0 duration-300 ${
-        open ? "left-0 block" : "left-0 hidden"
-      }`}
+          className={`md:hidden transition ease-out duration-500 text-white absolute w-screen h-screen z-10
+      px-7 py-2 font-medium bg-[#081421] shadow-2xl  top-0 ${
+        open ? "right-0 block" : "left-0 hidden"
+      }`   } style={{transition:'all 0.5 ease'}}
         >
-          <ul className="flex flex-col justify-center h-[300px] gap-10 py-2 text-lg mt-[100px]">
+<div    className={`z-[99999px] text-3xl md:hidden absolute left-[30px] top-[30px] `}>
+      <Image src="/images/logo.svg" width={100} height={50} alt="icon"/>
+    </div>
+          <div  onClick={() => setOpen(!open)}
+          className={`z-[99999px] text-3xl md:hidden absolute right-[30px] top-[30px] `}>
+            <Image src="/images/icon-close.svg" width={20} height={20} alt="icon"/>
+          </div>
+          <ul className="flex flex-col justify-center h-[300px] gap-[50px] py-2 text-lg mt-[180px]">
           <li  onClick={() => setOpen(!open)}><Link href="/">Home</Link></li>
           <li className="cursor-pointer" >
                 About Us
@@ -49,7 +60,9 @@ function Navbar() {
                 <li  onClick={() => setOpen(!open)}><Link href="melodax">Community</Link></li>
                 <li  onClick={() => setOpen(!open)}>Features</li>
                
-                <li></li>
+                <li className='flex gap-[5px]'><Link href="/auth/login"><button className="bg-[#54CED5] text-white w-[170px] rounded-full p-2" >LOGIN</button></Link>
+                <Link href="/auth/signup"><button className="bg-[#54CED5] text-white w-[170px] rounded-full p-2" >SIGNUP</button></Link>
+                </li>
           </ul>
         </div>
    </nav>
