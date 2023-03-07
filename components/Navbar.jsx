@@ -1,12 +1,21 @@
 import React,{useState} from 'react'
 import Image from "next/image"
 import Link from "next/link"
-
+import { useSession, signIn, signOut } from "next-auth/react"
+import { useRouter } from 'next/router'
 
 function Navbar() {
+  const { data: session } = useSession()
+  const router = useRouter();
 const transition = {
   transition:'all 0.5 ease-in'
 }
+
+
+const handlesignOut = async ()=>{
+const data = await signOut({redirect:false,callbackUrl:'/auth/login'})
+router.push(data.url)
+} 
 
   const [open,setOpen] = useState(false)
   return (
@@ -22,9 +31,15 @@ const transition = {
         <li>
           Features
         </li>
-        <li>
-          <Link href="/auth/login">Sign In</Link>
+
+        <li>About Us</li>
+       {
+        session ?  <li>
+        <Link href="#" onClick={handlesignOut}>Sign Out</Link>
+      </li>: <li>
+          <Link href="/login">Sign In</Link>
         </li>
+       }
       </ul>
     </div>
 
@@ -57,11 +72,11 @@ const transition = {
                 About Us
             </li>
                 
-                <li  onClick={() => setOpen(!open)}><Link href="melodax">Community</Link></li>
+               
                 <li  onClick={() => setOpen(!open)}>Features</li>
                
-                <li className='flex gap-[5px]'><Link href="/auth/login"><button className="bg-[#54CED5] text-white w-[170px] rounded-full p-2" >LOGIN</button></Link>
-                <Link href="/auth/signup"><button className="bg-[#54CED5] text-white w-[170px] rounded-full p-2" >SIGNUP</button></Link>
+                <li className='flex gap-[5px]'><Link href="/login"><button className="bg-[#54CED5] text-white w-[170px] rounded-full p-2" >LOGIN</button></Link>
+                <Link href="/signup"><button className="bg-[#54CED5] text-white w-[170px] rounded-full p-2" >SIGNUP</button></Link>
                 </li>
           </ul>
         </div>

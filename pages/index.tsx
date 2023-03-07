@@ -5,8 +5,11 @@ import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import {Authentication} from "../services/utils"
 import Link from "next/link"
+import { useSession, signIn, signOut } from "next-auth/react"
 
 export default function Home() {
+
+  const {data:session} = useSession();
 
   const obj = new Authentication()
 
@@ -81,7 +84,7 @@ export default function Home() {
   <div className='flex flex-col items-center justify-center'> 
   <h1 className='text-3xl text-center -mt-[70px] py-4'>All your files in one secure location,<br/>accessible anywhere</h1>
   <p className='mt-[20px] md:w-[550px] text-center text-sm'>Fylo stores all your important files in one location. Access them whenever you need,share and collaborate with friends and families, co-workers</p>
-  <div className='mt-[20px]'><Link href="/auth/signup"><button className="bg-[#54CED5] text-white w-[200px] rounded-full p-2" >Get Started</button></Link></div>
+  <div className='mt-[20px]'><Link href="/signup">{session?<button className="bg-[#54CED5] text-white w-[200px] rounded-full p-2" >Go To Dashboard</button>:<button className="bg-[#54CED5] text-white w-[200px] rounded-full p-2" >Get Started</button> }</Link></div>
   <p></p>
 
   </div>
